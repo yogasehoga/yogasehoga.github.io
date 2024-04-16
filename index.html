@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #myCanvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="500" height="300"></canvas>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    
+    // Write "Jaipur" on canvas
+    ctx.font = "48px Arial";
+    ctx.fillText("Jaipur", 200, 150);
+
+    let zoom = 1;
+    let x = 0;
+    let y = 0;
+
+    // Add panning functionality
+    canvas.addEventListener("mousemove", (e) => {
+      if (e.buttons === 1) {
+        x += e.movementX / zoom;
+        y += e.movementY / zoom;
+        ctx.setTransform(zoom, 0, 0, zoom, x, y);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillText("Jaipur", 200, 150);
+      }
+    });
+
+    // Add zooming functionality
+    canvas.addEventListener("wheel", (e) => {
+      if (e.deltaY < 0) {
+        zoom *= 1.1;
+      } else {
+        zoom *= 0.9;
+      }
+      ctx.setTransform(zoom, 0, 0, zoom, x, y);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillText("Jaipur", 200, 150);
+    });
+  </script>
+</body>
+</html>
+
