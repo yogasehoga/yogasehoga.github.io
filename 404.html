@@ -1,1 +1,85 @@
-hello there please visit my site at /index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oops! Something's Missing...</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Arial", sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      background: #fff;
+      color: #2575fc;
+      font-weight: bold;
+      padding: 0.8rem 1.2rem;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.5);
+    }
+
+    .joke {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Oops! You're Early!</h1>
+    <p>
+      It looks like you're trying to visit something that isn't ready yet. 
+      But don't worry, we've got you covered! Click the button below to get redirected
+      to our main site.
+    </p>
+    <a href="https://challengepi.com">Take Me to ChallengePi.com</a>
+    <p class="joke">
+      PS: Why did the developer go broke? Because he used up all his cache! 🐱‍💻
+    </p>
+  </div>
+</body>
+</html>
