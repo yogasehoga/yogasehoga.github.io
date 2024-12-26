@@ -129,6 +129,7 @@
       box-shadow: 0 0 15px var(--neon-glow);
       position: relative;
       z-index: 1;
+      cursor: pointer; /* So users know it's clickable */
     }
 
     /* Curvy dividers between sections (just aesthetic) */
@@ -254,9 +255,6 @@
     #theme-selector select:focus {
       border-color: var(--accent-color);
     }
-
-    /* Remove the desktop theme selector buttons */
-    /* (Previously present theme-selector buttons are removed) */
 
     /* --------------
        SLIDER NAVIGATION
@@ -434,7 +432,7 @@
         </div>
         <div class="slide-image-container">
           <img 
-            src="https://picsum.photos/600/400?random=1" 
+            src="/images/bdd.gif" 
             alt="Welcome to ChallengePi" 
             class="slide-image"
             loading="lazy"
@@ -457,7 +455,7 @@
         </div>
         <div class="slide-image-container">
           <img 
-            src="https://picsum.photos/600/400?random=2" 
+            src="images/tango_attribute.png" 
             alt="TANGO Integration" 
             class="slide-image"
             loading="lazy"
@@ -524,7 +522,7 @@
         </div>
         <div class="slide-image-container">
           <img 
-            src="https://picsum.photos/600/400?random=5" 
+            src="images/testcase.gif" 
             alt="Monitoring Board" 
             class="slide-image"
             loading="lazy"
@@ -546,7 +544,7 @@
         </div>
         <div class="slide-image-container">
           <img 
-            src="https://picsum.photos/600/400?random=6" 
+            src="images/customruntime.gif" 
             alt="Python Integration" 
             class="slide-image"
             loading="lazy"
@@ -568,7 +566,7 @@
         </div>
         <div class="slide-image-container">
           <img 
-            src="https://picsum.photos/600/400?random=7" 
+            src="images/testcase.gif" 
             alt="JIRA Integration" 
             class="slide-image"
             loading="lazy"
@@ -591,7 +589,7 @@
         </div>
         <div class="slide-image-container">
           <img 
-            src="https://picsum.photos/600/400?random=8" 
+            src="images/prebuild.png" 
             alt="Custom Widgets" 
             class="slide-image"
             loading="lazy"
@@ -636,7 +634,7 @@
         </div>
         <div class="slide-image-container">
           <img 
-            src="https://picsum.photos/600/400?random=10" 
+            src="images/bdd.gif" 
             alt="Easy Test Harness" 
             class="slide-image"
             loading="lazy"
@@ -682,7 +680,6 @@
 
     function updateSlidePosition() {
       presentation.style.transform = `translateX(-${currentSlideIndex * 100}vw)`;
-      // Update dropdown to reflect current theme if needed
     }
 
     document.getElementById('nextBtn').addEventListener('click', () => {
@@ -708,7 +705,6 @@
 
     // Initialize dropdown to current theme on page load
     window.addEventListener('DOMContentLoaded', () => {
-      // Get the current theme class from body
       const currentTheme = document.body.classList[0];
       themeDropdown.value = currentTheme;
     });
@@ -763,6 +759,39 @@
         currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
         updateSlidePosition();
       }
+    });
+
+    /* ---------------------------------------------------
+       TOGGLE FULLSCREEN ON IMAGE CLICK (NEW ADDITION)
+    --------------------------------------------------- */
+    const slideImages = document.querySelectorAll('.slide-image');
+
+    slideImages.forEach((img) => {
+      img.addEventListener('click', () => {
+        // If we're not in fullscreen, request fullscreen on this image
+        if (!document.fullscreenElement) {
+          if (img.requestFullscreen) {
+            img.requestFullscreen();
+          } else if (img.webkitRequestFullscreen) {
+            // Safari
+            img.webkitRequestFullscreen();
+          } else if (img.msRequestFullscreen) {
+            // IE/Edge
+            img.msRequestFullscreen();
+          }
+        } else {
+          // If we ARE in fullscreen, exit fullscreen
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) {
+            // Safari
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+            // IE/Edge
+            document.msExitFullscreen();
+          }
+        }
+      });
     });
   </script>
 </body>
